@@ -1,0 +1,7 @@
+-Preprocessor methods
+-Add a plugin feature to easily add new operand methods
+-Add scope to the variables
+-Update symbol table so it is more memory efficient and can add more than 40 values
+-Add a universal error method
+-Add support for functions/methods and other data types
+-Add threads
