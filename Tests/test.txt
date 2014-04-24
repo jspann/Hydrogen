@@ -1,6 +1,6 @@
 defi 7
 defi 4
-add $0,3,6,$1
+add $0,3,6,$1,
 defi 237
-add $1,2
+add $1,2,$1,
 halt
