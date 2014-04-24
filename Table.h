@@ -10,6 +10,7 @@
 #define ____Table__
 
 #include <iostream>
+#include "Variable.h"
 
 
 class SymbolTable {
@@ -18,9 +19,8 @@ public:
     void initializeTable();
     void addToTable(char,int);
     void printTable();
-    void set_values (int,int);
     int returnValues(int);
-    void setValue(int, int);
+    void setValue(Variable, int);
 };
 
 

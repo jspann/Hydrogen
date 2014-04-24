@@ -7,6 +7,8 @@
 //
 
 #include "Table.h"
+#include "Variable.h"
+
 #define KBLU  "\x1B[34m"
 
 int Svalues[40];
@@ -29,8 +31,8 @@ void SymbolTable::addToTable(char type,int v){
 
 }
 
-void SymbolTable::setValue(int loc, int vu){
-    Svalues[loc] = vu;
+void SymbolTable::setValue(Variable loc, int vu){
+    Svalues[loc.value] = vu;
 }
 
 void SymbolTable::printTable(){
@@ -42,7 +44,7 @@ void SymbolTable::printTable(){
 }
 
 int SymbolTable::returnValues(int atLocation) {
-    if (atLocation > 40){
+    if (atLocation > 40 || atLocation < 0){
         cout << "Invalid memory location" << endl;
         return 0;
     }
