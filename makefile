@@ -4,7 +4,7 @@ CFLAGS=-Wall
 
 all: vm.cpp Front.cpp vm.h
 	$(PP) $(CFLAGS) -c *.cpp
-	$(PP) -o hydro vm.o Front.o Table.o
+	$(PP) -o hydro vm.o Front.o Table.o Scheduler.o Parser.o
 	sudo mv hydro /usr/bin
 
 clean:
