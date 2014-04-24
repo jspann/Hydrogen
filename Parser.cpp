@@ -1,23 +1,29 @@
-#include <iostream>
+//
+//  Parser.cpp
+//  
+//
+//  Created by James Spann on 4/23/14.
+//
+//
+
 #include <fstream>
+
+#include "Parser.h"
 #include "vm.h"
-#include "Table.h"
+#include "Variable.h"
 
-#define KBLU  "\x1B[34m"
-
-
-int running = 1;//1 if the vm is running and 0 if it is halted
 using namespace std;
+
+int addToInt(int origi, int val);
+
 string operand;
 bool isVariable;
 int currentInt;
-int parameters[5];
+Variable parameters[5];
+SymbolTable rect;
 
-
-void execute(char* fname){
-    SymbolTable rect;
+void parse(char* fname){
     rect.initializeTable();
-    
     char ch;
     int numParams;
     int paramPlace = 0;
@@ -26,52 +32,63 @@ void execute(char* fname){
     fstream fin(fname, fstream::in);
     
     while (fin >> noskipws >> ch) {
-
         if (isalpha(ch)) {
             operand += ch;
         }else if (isdigit(ch)) {
             int lucy = ch - '0';
             currentInt = addToInt(currentInt,lucy);
-
+            
         }else{
             switch (ch) {
                 case ' ':
-                    numParams = isOperand();
                     
                     break;
                 case ',':
-
-                    parameters[paramPlace] = currentInt;
+                    
+                    Variable t;
+                    t.value = currentInt;
+                    
+                    t.datatype = (isVariable) ? (1) : (0);
+                    
+                    parameters[paramPlace] = t;
                     paramPlace++;
                     
-                    currentInt = 0;
+
                     
+                    currentInt = 0;
                     isVariable = false;
                     break;
                 case '$':
                     isVariable = true;
                     break;
                 case '\n':
+                    
+                    
                     if (operand.compare("defi") == 0) {
                         rect.addToTable('i',currentInt);
                     }else if (operand.compare("add") == 0) {
                         int jt = 0;
                         
                         if (paramPlace != 1 && paramPlace != 0) {
-
+                            
                             for (int d = 1; d < paramPlace; d++) {
-                                jt +=parameters[d];
+                                if (parameters[d].datatype == 1){
+                                    jt +=rect.returnValues(parameters[d].value);
+                                }else{
+                                    jt +=parameters[d].value;
+                                }
+                                
                             }
                             
                         }
                         
-                        if (isVariable) {
-                            jt += rect.returnValues(currentInt);
-                        }
-                        
+
                         
                         rect.setValue(parameters[0],jt);
                     }
+                    
+
+                    
                     
                     currentInt=0;
                     paramPlace = 0;
@@ -81,38 +98,15 @@ void execute(char* fname){
                     cout <<"Parse error";
             }
         }
-    }
 
+    }
     rect.printTable();
 
 }
-/*
- Operands:
- add <where it will be stored>,<first value>,<second value>
- defi <value>
- sub <where it will be stored>,<first value>,<second value>
- hlt
-*/
 
-int isOperand(){
-    if (operand.compare("defi") == 0) {
-        return 1;
-    }else if (operand.compare("add") == 0 || operand.compare("sub") == 0) {
-        return 3;
-    }else if (operand.compare("hlt") == 0||operand.compare("halt") == 0) {
-        return 0;
-    }else{
-        cout <<"Invalid operand: \""<< operand << "\"" << endl;
-        return -1;
-    }
-}
 
 
 
 int addToInt(int origi, int val){
     return (origi * 10)+val ;
-}
-
-void runCode(){
-    
 }
