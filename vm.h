@@ -8,8 +8,11 @@
 
 #ifndef _vm_h
 #define _vm_h
+//#include "Table.h"
 
-void execute(char* fname);
-int isOperand();
-int addToInt(int origi, int val);
+//SymbolTable rect;
+
+//void execute(char* fname);
+//int isOperand();
+//int addToInt(int origi, int val);
 #endif
