@@ -8,11 +8,12 @@
 #include <string.h>
 #include <stdio.h>
 #include "Front.h"
-#include "vm.h"
+#include "Parser.h"
+#include "Hydrogen.h"
 
 char *filename;
 void printversion(){
-    printf("Hydrogen Version %i.%i\n",MAJOR_VERSION,MINOR_VERSION);
+    printf("Hydrogen Version %i.%02i\n",MAJOR_VERSION,MINOR_VERSION);
 }
 
 void help(){
@@ -37,7 +38,7 @@ int main (int argc, char *argv[]) {
             FILE *fp = fopen(filename,"r");
             if( fp ) {
                 fclose(fp);
-                execute(filename);
+                parse(filename);
                 
             } else {
                 printf("The file doesn't exist. Make sure you have titled it correctly. \n");
