@@ -15,4 +15,4 @@ completeclean:
 	sudo rm -f /usr/bin/hydro
 
 test: hydro
-	./hydro -R test.txt
+	hydro -R tests/test.txt
