@@ -14,6 +14,8 @@
 char *filename;
 void printversion(){
     printf("Hydrogen Version %i.%02i\n",MAJOR_VERSION,MINOR_VERSION);
+    //printf("Hydrogen Version \033[1;31m%i.%02i\033[0m\n",MAJOR_VERSION,MINOR_VERSION);
+    //std::cout << "\033[1;31mbold red text\033[0m\n";
 }
 
 void help(){
