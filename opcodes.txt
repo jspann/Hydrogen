@@ -1,0 +1,6 @@
+Hydrogen Opcodes:
+
+defi - this defines a new integer
+add - used for adding values
+sub - used in subtracting values
+call this is used in calling a function
