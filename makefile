@@ -6,6 +6,8 @@ all: vm.cpp Front.cpp vm.h
 	$(PP) $(CFLAGS) -c *.cpp
 	$(PP) -o hydro vm.o Front.o Table.o Scheduler.o Parser.o
 	sudo mv hydro /usr/bin
+	rm -f *.o
+
 
 clean:
 	rm -f hydro *.o
