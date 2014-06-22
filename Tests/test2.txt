@@ -1,0 +1,4 @@
+defi 7
+defi 8
+sub $0,$1,
+halt
