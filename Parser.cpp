@@ -85,10 +85,8 @@ void parse(char* fname){
 
                         
                         rect.setValue(parameters[0],jt);
+                    }else if (operand.compare("sub") == 0) {
                     }else if (operand.compare("call") == 0) {
-                        
-                    }else if (operand.compare("call") == 0) {
-                        
                     }else{
                         cout << "Unknown operand: " << operand << endl;
                         cout << "Halting" << endl;
@@ -111,6 +109,7 @@ void parse(char* fname){
     rect.printTable();
 
 }
+
 
 
 
