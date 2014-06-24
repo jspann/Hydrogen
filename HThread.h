@@ -10,6 +10,8 @@
 #define ____HThread__
 
 #include <iostream>
+#include <pthread.h>
+
 
 struct HThread {
     int tid;//the number of the thread

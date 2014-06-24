@@ -6,10 +6,12 @@
 //
 //
 
-#include "HThread.h"
+#include <pthread.h>
 
+#include "HThread.h"
+//http://www.tutorialspoint.com/cplusplus/cpp_multithreading.htm
 void start(){
-    
+    //pthread_create();
 }
 
 void pause(){
@@ -21,7 +23,7 @@ void resume(){
 }
 
 void stop(){
-    
+    //pthread_exit (status);
 }
 
 void setPriority(int newPrior){
