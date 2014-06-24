@@ -6,7 +6,7 @@ A basic process virtual machine
 
 
 ## What is Hydrogen?
-A simple ([register based](http://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/)) ([http://stackoverflow.com/questions/22477128/difference-between-process-virtual-machine-with-system-virtual-machine](http://en.wikipedia.org/wiki/Constant_(programming)) which is written in C++. It uses its own dialect of assembly and is designed to work on OSX x86_64 systems. It is intended to be used with the Giraffe Programming language but can be used with others.
+A simple ([register based](http://markfaction.wordpress.com/2012/07/15/stack-based-vs-register-based-virtual-machine-architecture-and-the-dalvik-vm/) ) ([http://stackoverflow.com/questions/22477128/difference-between-process-virtual-machine-with-system-virtual-machine](http://en.wikipedia.org/wiki/Constant_(programming)) ) which is written in C++. It uses its own dialect of assembly and is designed to work on OSX x86_64 systems. It is intended to be used with the Giraffe Programming language but can be used with others.
 
 ## How do I compile Hydrogen?
 To compile Hydrogen make sure you have gcc and simply type `make`. This will compile the files and add the `hydro` binary to your /usr/bin directory.
