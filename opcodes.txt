@@ -3,3 +3,11 @@ Hydrogen Opcodes:
 defi - this defines a new integer
 add - used for adding values
 sub - used in subtracting values
+mult - used in subtracting values
+div - used in subtracting values
+mod - used in subtracting values
+inc - increment
+dec - decriment
+compep - compares the 2 values and checks if they are equal
+goto - goto line in file
+ret - returns from method
