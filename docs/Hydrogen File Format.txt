@@ -1,0 +1,8 @@
+Header - contains information about the application
+•This file version
+•
+•
+•
+•
+Data - this section has the executable code to be run
+Constant Pool - this contains data that remains constant and cannot be changed
