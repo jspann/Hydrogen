@@ -18,10 +18,16 @@ void printversion(){
     //std::cout << "\033[1;31mbold red text\033[0m\n";
 }
 
+void printFileVersion(){
+    printf("Hydrogen File Version: ");
+
+}
+
 void help(){
     printf("\nAvailable commands\n");
     printf("=================\n");
     printf("-v for version\n");
+    printf("-fv for file version\n");
     printf("-R for running a file\n");
     printf("-? for this screen\n\n");
 }
