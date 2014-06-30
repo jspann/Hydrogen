@@ -1,0 +1,5 @@
+Hydrogen 1.0 - Initial Version
+
+Hydrogen 1.01
+•added the variable data type to make parsing easier
+•updated the front end and the parser
