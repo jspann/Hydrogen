@@ -8,6 +8,7 @@
 
 #include "Table.h"
 #include "Variable.h"
+#include "VM.h"
 
 #define KBLU  "\x1B[34m"
 
@@ -23,11 +24,17 @@ void SymbolTable::initializeTable(){
 }
 
 void SymbolTable::addToTable(char type,int v){
-    //type i=integer c=char
-    //v is for value
-    Stypes[usedSpaces] = type;
-    Svalues[usedSpaces] = v;
-    usedSpaces++;
+    if (usedSpaces < tableSpaces) {
+        //type i=integer c=char
+        //v is for value
+        Stypes[usedSpaces] = type;
+        Svalues[usedSpaces] = v;
+        usedSpaces++;
+    }else{
+        badhalt("Cannot create new space in register");
+    }
+    
+    
 
 }
 

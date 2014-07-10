@@ -14,7 +14,8 @@
 
 
 class SymbolTable {
-
+    int tableSpaces;//Number of registers in the VM
+    
 public:
     void initializeTable();
     void addToTable(char,int);
