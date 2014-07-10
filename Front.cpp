@@ -19,7 +19,7 @@ void printversion(){
 }
 
 void printFileVersion(){
-    printf("Hydrogen File Version: ");
+    printf("Hydrogen File Version: %i\n",FILE_VERSION);
 
 }
 
@@ -29,11 +29,13 @@ void help(){
     printf("-v for version\n");
     printf("-fv for file version\n");
     printf("-R for running a file\n");
+    printf("-l for logging output to a file\n");
     printf("-? for this screen\n\n");
 }
 
 
 int main (int argc, char *argv[]) {
+    
     if (argv[1] == NULL){
         help();
     } else{
@@ -53,6 +55,8 @@ int main (int argc, char *argv[]) {
             }
             
             
+        }else if(strcmp(argv[1],"-fv")==0){
+            printFileVersion();
         }else if(strcmp(argv[1],"-?")==0){
             help();
         }else{
