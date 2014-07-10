@@ -9,12 +9,16 @@
 #ifndef _Hydrogen_h
 #define _Hydrogen_h
 
+//Versions
 #define MAJOR_VERSION 1
 #define MINOR_VERSION 01
 
-//VM build number.  This lets us know what file version we are expecting so we can optimally run our incoming applicaation
+#define FILE_VERSION 1
 
-#define BUILD_VERSION 1
+//Data Types
+typedef	uint8   bool;
+typedef	uint8   byte;
+typedef	signed int  num;
 
 
 #endif
