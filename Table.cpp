@@ -8,7 +8,7 @@
 
 #include "Table.h"
 #include "Variable.h"
-#include "VM.h"
+#include "vm.h"
 
 #define KBLU  "\x1B[34m"
 
