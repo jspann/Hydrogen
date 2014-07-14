@@ -3,6 +3,8 @@ Hydrogen Opcodes:
 defi - this defines a new integer
 const - defines new constant
 
+set - a quick assignment for registers (a secondary operand)
+
 add - used for adding values
 sub - used in subtracting values
 mult - used in subtracting values
