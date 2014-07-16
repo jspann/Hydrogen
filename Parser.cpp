@@ -30,7 +30,6 @@ void parse(char* fname){
     currentInt = 0;
     
     fstream fin(fname, fstream::in);
-    
     while (fin >> noskipws >> ch) {
         if (isalpha(ch)) {
             operand += ch;
@@ -87,6 +86,9 @@ void parse(char* fname){
                         rect.setValue(parameters[0],jt);
                     }else if (operand.compare("sub") == 0) {
                     }else if (operand.compare("call") == 0) {
+                    }else if (operand.compare("set") == 0) {
+                    }else if (operand.compare("hlt") == 0) {
+                        exit(0);
                     }else{
                         cout << "Unknown operand: " << operand << endl;
                         cout << "Halting" << endl;
