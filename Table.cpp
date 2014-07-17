@@ -21,6 +21,7 @@ using namespace std;
 
 void SymbolTable::initializeTable(){
     usedSpaces = 0;
+    tableSpaces = 40;
 }
 
 void SymbolTable::addToTable(char type,int v){
