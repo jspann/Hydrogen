@@ -19,4 +19,4 @@ Take a look at opcodes.txt
 Yup! Look at LICENSE
 
 ## Is it finished?
-No Way! There's always more to do! Look at TODO.txt
+No Way! There's always more to do! Look at docs/TODO.txt
