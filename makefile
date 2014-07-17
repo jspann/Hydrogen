@@ -2,7 +2,7 @@ CC=gcc
 PP=g++
 CFLAGS=-Wall
 
-all: vm.cpp Front.cpp vm.h HThread.h
+all: vm.cpp Front.cpp vm.h HThread.h operands.h
 	$(PP) $(CFLAGS) -c *.cpp
 	$(PP) $(CFLAGS) -c *.c
 	$(PP) -o hydro vm.o Front.o Table.o Scheduler.o Parser.o HThread.o
