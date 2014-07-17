@@ -10,6 +10,7 @@
 #include "Front.h"
 #include "Parser.h"
 #include "Hydrogen.h"
+#include "vm.h"
 
 char *filename;
 void printversion(){
@@ -28,8 +29,9 @@ void help(){
     printf("=================\n");
     printf("-v for version\n");
     printf("-fv for file version\n");
-    printf("-R for running a file\n");
-    printf("-l for logging output to a file\n");
+    printf("-R <filename> for running a file\n");
+    printf("-l for logging output to log.txt\n");
+    printf("-l <filename> for logging output to <filename> \n");
     printf("-? for this screen\n\n");
 }
 
@@ -44,6 +46,14 @@ int main (int argc, char *argv[]) {
             printversion();
         }else if(strcmp(argv[1],"-R")==0){
             filename=argv[2];
+            
+            /*if (strcmp(argv[3],"-l")==0) {
+                if (strcmp(argv[4],NULL)==0) {
+                    
+                }else{
+                    
+                }
+            }*/
             
             FILE *fp = fopen(filename,"r");
             if( fp ) {
