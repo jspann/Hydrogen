@@ -12,6 +12,8 @@
 //Versions
 #define MAJOR_VERSION 1
 #define MINOR_VERSION 01
+#define BUILD_VERSION 1 //Incremented each time there is a new release
+
 
 #define FILE_VERSION 1
 
