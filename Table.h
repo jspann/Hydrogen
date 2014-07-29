@@ -22,6 +22,7 @@ public:
     void printTable();
     int returnValues(int);
     void setValue(Variable, int);
+    //void setValue(int loc, int vu);
 };
 
 
