@@ -61,10 +61,17 @@ void parse(char* fname){
                     isVariable = true;
                     break;
                 case '\n':
-                    
+                    /*for (int h = 0; h<5; h++) {
+                        cout << h << ": " << parameters[h].datatype << "/" << parameters[h].value << endl;
+                        
+                    }
+                    cout << endl;*/
                     
                     if (operand.compare("defi") == 0) {
-                        rect.addToTable('i',currentInt);
+                        //rect.addToTable('i',currentInt);
+                        rect.addToTable('i',parameters[0].value);
+                    }else if (operand.compare("const") == 0) {
+                        rect.addToTable('c',currentInt);
                     }else if (operand.compare("add") == 0) {
                         int jt = 0;
                         
@@ -85,9 +92,16 @@ void parse(char* fname){
                         
                         rect.setValue(parameters[0],jt);
                     }else if (operand.compare("sub") == 0) {
+                    }else if (operand.compare("mod") == 0) {
+                    }else if (operand.compare("mult") == 0) {
                     }else if (operand.compare("call") == 0) {
                     }else if (operand.compare("set") == 0) {
+                    }else if (operand.compare("inc") == 0) {
+                        rect.setValue(parameters[0],rect.returnValues(parameters[0].value) + 1);
+                    }else if (operand.compare("dec") == 0) {
+                        rect.setValue(parameters[0],rect.returnValues(parameters[0].value) - 1);
                     }else if (operand.compare("hlt") == 0) {
+                        rect.printTable();
                         exit(0);
                     }else{
                         cout << "Unknown operand: " << operand << endl;
@@ -101,6 +115,9 @@ void parse(char* fname){
                     currentInt=0;
                     paramPlace = 0;
                     operand = "";
+                    
+                    //parameters[0] = 0;
+                    memset(parameters, 0, sizeof(parameters)) ;
                     break;
                 default:
                     cout <<"Parse error";
@@ -109,6 +126,7 @@ void parse(char* fname){
 
     }
     rect.printTable();
+    cout << "son" << endl;
 
 }
 
