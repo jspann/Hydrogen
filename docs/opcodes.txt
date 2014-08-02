@@ -16,8 +16,8 @@ inc - increment
 dec - decriment
 
 coeq - compares the 2 values and checks if they are equal
-cogt - compares the 2 values and checks if the 2nd value is greater than the first
-colt - compares the 2 values and checks if the 1st value is greater than the first
+cogt - compares the 2 values and checks if the 2nd value is greater than the first (less than operator)
+colt - compares the 2 values and checks if the 1st value is greater than the first (greater than operator)
 
 goto - goto line in file
 ret - returns from method
