@@ -4,7 +4,7 @@ defi - this defines a new integer
 defb - this defines a new boolean
 const - defines new constant
 
-set - a quick assignment for registers (a secondary operand)
+mov - move value into register
 
 add - used for adding values
 sub - used in subtracting values
