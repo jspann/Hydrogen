@@ -2,6 +2,7 @@ Hydrogen Opcodes:
 
 defi - this defines a new integer
 defb - this defines a new boolean
+defc - this defines a new char
 const - defines new constant
 
 mov - move value into register
@@ -19,7 +20,15 @@ coeq - compares the 2 values and checks if they are equal
 cogt - compares the 2 values and checks if the 2nd value is greater than the first (less than operator)
 colt - compares the 2 values and checks if the 1st value is greater than the first (greater than operator)
 
+call - calls the method and has the following operands as parameters
 goto - goto line in file
 ret - returns from method
 
 hlt - stops program
+
+
+
+Section opcodes:
+sech - Header section
+secs - Data section
+secm - method section
