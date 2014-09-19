@@ -24,6 +24,8 @@ call - calls the method and has the following operands as parameters
 goto - goto line in file
 ret - returns from method
 
+dump - prints the register and its values
+
 hlt - stops program
 
 
