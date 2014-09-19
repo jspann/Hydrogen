@@ -70,6 +70,10 @@ void parse(char* fname){
                     if (operand.compare("defi") == 0) {
                         //rect.addToTable('i',currentInt);
                         rect.addToTable('i',parameters[0].value);
+                    }else if (operand.compare("defb") == 0) {
+                        rect.addToTable('b',parameters[0].value);
+                    }else if (operand.compare("defc") == 0) {
+                        rect.addToTable('l',parameters[0].value);
                     }else if (operand.compare("const") == 0) {
                         rect.addToTable('c',currentInt);
                     }else if (operand.compare("add") == 0) {
@@ -95,7 +99,12 @@ void parse(char* fname){
                     }else if (operand.compare("mod") == 0) {
                     }else if (operand.compare("mult") == 0) {
                     }else if (operand.compare("call") == 0) {
-                    }else if (operand.compare("set") == 0) {
+                        //Get method name, parameters
+                        //Save program counter here
+                        //Go to the method section and invoke a new parser and an HStack (in future versions optimized programs will tell the vm if an HStack is needed)
+                        //run that code
+                        //on return, destroy HStack, move back to program counter and coninue program
+                    }else if (operand.compare("mov") == 0) {
                     }else if (operand.compare("inc") == 0) {
                         rect.setValue(parameters[0],rect.returnValues(parameters[0].value) + 1);
                     }else if (operand.compare("dec") == 0) {
