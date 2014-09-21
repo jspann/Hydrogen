@@ -1,5 +1,7 @@
 Header - The first section of the file which contains information about the application
+•Magic number (always 84)
 •File version
+•Method section offset (0 if not in file)
 
 Data - Has the executable code to be run
 
