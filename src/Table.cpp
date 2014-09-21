@@ -43,6 +43,10 @@ void SymbolTable::setValue(Variable loc, int vu){
     Svalues[loc.value] = vu;
 }
 
+void SymbolTable::setValueAt(int loc, int vu){
+    Svalues[loc] = vu;
+}
+
 /*void SymbolTable::setValue(int loc, int vu){
     Svalues[loc] = vu;
 }*/
