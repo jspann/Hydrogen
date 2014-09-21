@@ -1,0 +1,13 @@
+-Preprocessor methods
+-Add a plugin feature to easily add new operand methods
+-Add scope to the variables in the table
+-Update symbol table so it is more memory efficient and can add more than 40 values
+-Add a universal error method
+-Add support for functions/methods and other data types
+-Add threads
+-Add a scheduler
+-Separate the parser into its own file
+-Integrate debugging tools directly into the VM
+√Add a flag so the register values can be dumped successfully
+-Design a portable libc for Hydrogen
+-Currently Hydrogen is a high level VM and only functions as an interpreter. I would like to redesign it to work closer to the metal (have an operating system boot into Hydrogen; Make Hydrogen compile the bytecode and run it as machine code instead of just interpreting the bytecode)
