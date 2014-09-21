@@ -8,6 +8,6 @@
 -Add a scheduler
 -Separate the parser into its own file
 -Integrate debugging tools directly into the VM
--Add a flag so the register values can be dumped successfully
+√Add a flag so the register values can be dumped successfully
 -Design a portable libc for Hydrogen
 -Currently Hydrogen is a high level VM and only functions as an interpreter. I would like to redesign it to work closer to the metal (have an operating system boot into Hydrogen; Make Hydrogen compile the bytecode and run it as machine code instead of just interpreting the bytecode)
