@@ -14,13 +14,16 @@
 
 
 class SymbolTable {
-
+    int tableSpaces;//Number of registers in the VM
+    
 public:
     void initializeTable();
     void addToTable(char,int);
     void printTable();
     int returnValues(int);
     void setValue(Variable, int);
+    void setValueAt(int loc, int vu);
+    //void setValue(int loc, int vu);
 };
 
 
