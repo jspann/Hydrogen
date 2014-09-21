@@ -10,6 +10,6 @@
 #define _main_h
 
 void help();
-
+void enterCommands();
 
 #endif
