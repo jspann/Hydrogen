@@ -1,0 +1,41 @@
+Hydrogen Opcodes:
+
+defi - this defines a new integer
+
+mov - move value into register
+
+add - used for adding values
+sub - used in subtracting values
+
+inc - increment
+dec - decriment
+
+
+dmp - prints the register and its values
+
+hlt - stops program
+
+
+
+
+
+
+Not yet implemented opcodes:
+defb - this defines a new boolean (1 for true 0 for false)
+defc - this defines a new char
+cnst - defines new constant
+mult - used in subtracting values
+div - used in subtracting values
+mod - used in subtracting values
+coeq - compares the 2 values and checks if they are equal
+cogt - compares the 2 values and checks if the 2nd value is greater than the first (less than operator)
+colt - compares the 2 values and checks if the 1st value is greater than the first (greater than operator)
+call - calls the method and has the following operands as parameters
+goto - goto line in file
+ret - returns from method
+fee - frees value from memory
+
+Section opcodes:
+sech - Header section
+secs - Data section
+secm - method section
