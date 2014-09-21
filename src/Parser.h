@@ -14,6 +14,7 @@
 
 
 void parse(char* fname);
-
+void headparse();
+//FILE *f;
 
 #endif /* defined(____Parser__) */
