@@ -1,0 +1,9 @@
+84 1 0
+
+defi 7
+defi 4
+add $0,3,
+defi 237
+add $1,2,
+dmp
+halt
