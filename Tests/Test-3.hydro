@@ -1,0 +1,7 @@
+84 1 0
+
+defi 7,
+defi 4,
+mov $0,$1,
+dmp
+halt
