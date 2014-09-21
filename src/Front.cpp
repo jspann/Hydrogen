@@ -11,7 +11,7 @@
 #include "Parser.h"
 #include "Hydrogen.h"
 #include "vm.h"
-
+#include "Flags.h"
 char *filename;
 void printversion(){
     printf("Hydrogen Version %i.%02i\n",MAJOR_VERSION,MINOR_VERSION);
@@ -30,8 +30,8 @@ void help(){
     printf("=================\n");
     printf("-v for version\n");
     printf("-R <filename> for running a file\n");
-    printf("-l for logging output to log.txt\n");
-    printf("-l <filename> for logging output to <filename> \n");
+//    printf("-l for logging output to log.txt\n");
+//    printf("-l <filename> for logging output to <filename> \n");
     printf("-? for this screen\n\n");
 }
 
@@ -47,13 +47,11 @@ int main (int argc, char *argv[]) {
         }else if(strcmp(argv[1],"-R")==0){
             filename=argv[2];
             
-            /*if (strcmp(argv[3],"-l")==0) {
-                if (strcmp(argv[4],NULL)==0) {
-                    
-                }else{
-                    
-                }
-            }*/
+            if (strcmp(argv[3],"-l")==0) {
+                isLog = true;
+            }else{
+                isLog = false;
+            }
             
             FILE *fp = fopen(filename,"r");
             if( fp ) {
