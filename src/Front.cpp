@@ -48,9 +48,9 @@ int main (int argc, char *argv[]) {
             filename=argv[2];
             
             if (strcmp(argv[3],"-l")==0) {
-                isLog = true;
+//                isLog = true;
             }else{
-                isLog = false;
+//                isLog = false;
             }
             
             FILE *fp = fopen(filename,"r");

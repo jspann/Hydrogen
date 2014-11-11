@@ -18,9 +18,9 @@
 #define FILE_VERSION 1
 
 //Data Types
-typedef	uint   BOOL;
-typedef	uint   byte;
-typedef	signed int  num;
+//typedef	uint   BOOL;
+//typedef	uint   byte;
+//typedef	signed int  num;
 
 
 #endif
