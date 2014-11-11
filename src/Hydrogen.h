@@ -22,5 +22,4 @@
 //typedef	uint   byte;
 //typedef	signed int  num;
 
-
 #endif

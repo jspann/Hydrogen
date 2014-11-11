@@ -48,6 +48,7 @@ int main (int argc, char *argv[]) {
             filename=argv[2];
             
             if (strcmp(argv[3],"-l")==0) {
+
 //                isLog = true;
             }else{
 //                isLog = false;

@@ -9,5 +9,6 @@
 #ifndef _Flags_h
 #define _Flags_h
 
+
 //BOOL isLog;
 #endif
