@@ -16,7 +16,7 @@ To test your freshly built version of Hydrogen, press type `make test` or `hydro
 Take a look at opcodes.txt
 
 ## Is it under a license?
-Yup! Look at LICENSE
+Yup! Look at LICENSE 
 
 ## Is it finished?
 No Way! There's always more to do! Look at docs/TODO.txt
