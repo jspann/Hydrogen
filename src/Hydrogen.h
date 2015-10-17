@@ -15,7 +15,7 @@
 #define BUILD_VERSION 1 //Incremented each time there is a new release
 
 
-#define FILE_VERSION 1
+#define FILE_VERSION 2
 
 #define MAX_FUNCTION 50
 
