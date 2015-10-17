@@ -11,7 +11,7 @@
 //int fileLog;//A flag for logging output to a file. 1 for one 0 for off
 
 void badhalt(std::string reason);
-void initVM();
+void initVM(FILE *file);
 void loadFile(char* filename);
 
 #endif
