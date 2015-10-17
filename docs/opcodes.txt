@@ -23,6 +23,7 @@ hlt - stops program
 Not yet implemented opcodes:
 defb - this defines a new boolean (1 for true 0 for false)
 defc - this defines a new char
+deff - defines a nef function. 2 paramters: return type, name (in plaintext)
 cnst - defines new constant
 mult - used in subtracting values
 div - used in subtracting values
@@ -32,8 +33,9 @@ cogt - compares the 2 values and checks if the 2nd value is greater than the fir
 colt - compares the 2 values and checks if the 1st value is greater than the first (greater than operator)
 call - calls the method and has the following operands as parameters
 goto - goto line in file
-ret - returns from method
-fee - frees value from memory
+ret - returns value
+retv - returns void
+free - frees value from memory
 
 Section opcodes:
 sech - Header section
