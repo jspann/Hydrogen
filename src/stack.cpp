@@ -1,4 +1,4 @@
-#import "stack.h"
+//#import "stack.h"
 
 // void Stack::initStack(){
 // 	Stack::scount = 0;//CURRENT NUMBER OF VALUES ON STACK

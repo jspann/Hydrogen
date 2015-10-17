@@ -15,10 +15,14 @@ class Stack{
 	int scount;//Number of used spaces in stack
 
 	public:
-		void initStack(){scount = 0;return;}//Creates stack
+		Stack();
+		void initStack(){scount = 0;int i;for(i = 0; i<MAX_FUNCTION; i++){values[i]=0;}return;}//Creates stack
 		void push(int p){values[scount] = p;scount++;return;}//Adds value to top of stack
 		void pop(){scount--;return;}//Removes topmost value in stack
 		int count(){return scount;}//Number of used spaces in stack
 };
 
+Stack::Stack(){
+
+}
 #endif
