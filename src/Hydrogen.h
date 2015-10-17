@@ -17,6 +17,8 @@
 
 #define FILE_VERSION 1
 
+#define MAX_FUNCTION 50
+
 //Data Types
 //typedef	uint   BOOL;
 //typedef	uint   byte;
