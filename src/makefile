@@ -2,10 +2,11 @@ CC=gcc
 PP=g++
 CFLAGS=-Wall
 
-all: vm.cpp Front.cpp vm.h operands.h
-	$(PP) $(CFLAGS) -c *.cpp
-	$(CC) $(CFLAGS) -c *.c
-	$(PP) -o hydro vm.o Front.o Table.o Scheduler.o Parser.o
+all:
+	$(PP) $(CFLAGS) -c heap.cpp
+	$(PP) $(CFLAGS) -c Front.cpp
+	$(PP) $(CFLAGS) -c vm.cpp
+	$(PP) -o hydro heap.o vm.o Front.o
 	sudo mv hydro /usr/bin
 	rm -f *.o
 
