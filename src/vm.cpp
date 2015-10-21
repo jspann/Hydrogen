@@ -3,6 +3,7 @@
 //#import "bool.h"
 #include "vm.h"
 #include "stack.h"
+#include "register.h"
 #include "heap.h"
 
 #define KBLU  "\x1B[34m"
@@ -10,70 +11,87 @@
 
 bool running = 0;//1 if the vm is running and 0 if it is halted
 //using namespace std;
+FILE *mainFile;
 
 short int readMagicHeader(FILE *file);
 void readMagic(FILE *fle);
+void getopcode();
+char execute();
 
 void initVM(FILE *fle){
-	//Create initial thread
+	//Create data structures
 	Stack functionStack;
+	Register programRegister;
+	
+	mainFile = fle;
+	//Create initial thread
+
 	functionStack.initStack();
+	programRegister.initRegister();
 	readMagic(fle);
 
 	running = 1;
-	//while(1){
-		//get instruction
+	while (running){
+		char instr = getInstruction();
+	}
+}
 
-		//get parameters for instruction
-	//}
+char getInstruction(){
+	char temp;
+	return fread(&temp,sizeof(char),1,mainFile);
+}
+
+int execute(char instr){
+	switch(instr){
+		case 1://
+			break;
+		case 2://add
+			break;
+		case 3://sub
+			break;
+		case 4://
+			break;
+		case 5://
+			break;
+		case 6://
+			break;
+		case 7://
+			break;
+		case 8://
+			break;
+		case 9://
+			break;
+		case 10://
+			break;
+		default:
+			printf("oh\n");
+			//badhalt("invalid operand");
+	}
 }
 
 void readMagic(FILE *fle){
-	/*char magics[3];
-	char temp;
-	
-	fread(&temp,sizeof(char),1,fle);
-	printf("%hd %c\n", temp,temp);
-	magics[0] = (int)temp;
-
-	fread(&temp,sizeof(short),1,fle);
-	printf("%hd\n", temp);
-	magics[1] = (int)temp;
-
-	printf("[%d] %c\n", magics[0],magics[0]);
-	printf("[%d] %c\n", magics[1],magics[1]);*/
 	char magics[3];
 	char temp;
-	
-	fread(&temp,sizeof(char),1,fle);
-	printf("%hd %c\n", temp,temp);
-	magics[0] = (int)temp;
-
-	fread(&temp,sizeof(char),1,fle);
-	printf("%hd\n", temp);
-	magics[1] = (int)temp;
-
-	printf("[%d] %c\n", magics[0],magics[0]);
-	printf("[%d] %c\n", magics[1],magics[1]);
 	for (int i = 0; i < 3; i++){
-
-		// magics[i] = temp;
-		// printf("%d %d %d\n", i, (int)magics[i],(int)temp);
+		fread(&temp,sizeof(char),1,fle);
+		printf("%hd\n", temp);
+		magics[i] = (int)temp;
 	}
 
-	if ((magics[0] == 72) && (magics[1] == 89)){// && (three == FILE_VERSION)){
+	if ((magics[0] == 72) && (magics[1] == 89) && (magics[2] == FILE_VERSION)){
 		printf("HEY!!!\n");
+		fread(&temp,sizeof(char),1,fle);
+		printf("%hd\n", temp);
 	}else{
 		printf("Error: invalid magic\n");
 	}
 
+
 }
-// short int readMagic(FILE *file){
-// 	short int instr;
-	
-// 	printf("%d\n", instr);
-// 	return (int)instr;
-// }
+
+void getopcode(){
+
+}
 
 void decode(int x){
 
