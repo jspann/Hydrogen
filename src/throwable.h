@@ -14,8 +14,17 @@ struct throwableError{
 	Breakpoint,
 	Overflow,
 	InvalidOpcode,
-	DoubleFault
+	DoubleFault,
+	RecursionLimit
 };
 
-void throw();
+char* messages[
+	"Divide Error",
+	"Breakpoint called",
+	"Stack Overflow",
+	"Invalid Opcode called",
+	"Recursion Limit Reached"
+	]
+
+void throw(int type);
 #endif
