@@ -1,19 +1,26 @@
 Hydrogen Opcodes:
 
-defi - this defines a new integer
+(0001) mov - move value into register
 
-mov - move value into register
+(0002) add - used for adding values
+(0003) sub - used in subtracting values
+(0004) mult - used in subtracting values
+(0005) div - used in subtracting values
+(0006) mod - used in subtracting values
 
-add - used for adding values
-sub - used in subtracting values
+(0007) inc - increment
+(0008) dec - decriment
 
-inc - increment
-dec - decriment
+(0010) goto - goto line in file
+ret - returns value
+retv - returns void
 
 
-dmp - prints the register and its values
+(0011) defi - this defines a new integer
 
-hlt - stops program
+(0030) dmp - prints the register and its values
+
+(0000) hlt - stops program
 
 
 
@@ -25,16 +32,10 @@ defb - this defines a new boolean (1 for true 0 for false)
 defc - this defines a new char
 deff - defines a nef function. 2 paramters: return type, name (in plaintext)
 cnst - defines new constant
-mult - used in subtracting values
-div - used in subtracting values
-mod - used in subtracting values
 coeq - compares the 2 values and checks if they are equal
 cogt - compares the 2 values and checks if the 2nd value is greater than the first (less than operator)
 colt - compares the 2 values and checks if the 1st value is greater than the first (greater than operator)
 call - calls the method and has the following operands as parameters
-goto - goto line in file
-ret - returns value
-retv - returns void
 free - frees value from memory
 
 Section opcodes:
