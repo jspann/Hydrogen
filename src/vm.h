@@ -13,5 +13,5 @@
 void badhalt(std::string reason);
 void initVM(FILE *file);
 void loadFile(char* filename);
-
+void checkenv();
 #endif
