@@ -32,6 +32,105 @@ int pVal = 0;//value in header
 int tempStore = 0;//Where we store integers as we get them from the file
 ifstream fin;
 
+int checkMagic(){
+    //Returns 1 for invalid magic numbers
+    //Returns 0 for correct magic numbers
+
+    //char
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 void parse(char* fname){
@@ -161,6 +260,8 @@ void parse(char* fname){
                         rect.setValue(parameters[0],rect.returnValues(parameters[0].value) - 1);
                     }else if (operand.compare("dmp") == 0) {//Dump values
                         rect.printTable();
+                    }else if (operand.compare("ret") == 0) {//Return function
+                        printf("return function\n");
                     }else if (operand.compare("hlt") == 0) {//Halt
 //                        rect.printTable();
                         //fclose(f);

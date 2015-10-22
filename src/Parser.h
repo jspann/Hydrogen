@@ -12,6 +12,7 @@
 #include <iostream>
 #include "Table.h"
 
+int checkMagic();
 
 void parse(char* fname);
 void headparse();
