@@ -1,0 +1,6 @@
+$ ./hdb
+(hdb) <filename>
+*check if file. If it is, run*
+... *runs until breakpoint*
+
+
