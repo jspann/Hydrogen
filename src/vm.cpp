@@ -22,11 +22,11 @@ unsigned int getInstruction();
 bool isReference();
 void getopcode();
 unsigned int getParameterValue();
-int execute(char instr);
+int execute(unsigned int instr);
 
 void initVM(FILE *fle){
 	//Create data structures
-	
+	checkenv();
 	mainFile = fle;
 	//Create initial thread
 
@@ -37,8 +37,8 @@ void initVM(FILE *fle){
 	running = 1;
 	while (running){
 		unsigned int instr = getInstruction();//fetch
-		printf("HD QUALITY [%hd]\n", instr);
-		printf("UNSIGNED EDITION [%u]\n", instr);
+		// printf("HD QUALITY [%hd]\n", instr);
+		// printf("UNSIGNED EDITION [%u]\n", instr);
 		execute(instr);//decode and execute
 		//debugger pause check
 	}
@@ -49,7 +49,7 @@ void initVM(FILE *fle){
 
 unsigned int getInstruction(){
 	int temp;
-	fread(&temp,sizeof(int),1,mainFile);
+	fread(&temp,sizeof(unsigned int),1,mainFile);
 	return temp;
 }
 
@@ -58,8 +58,10 @@ unsigned int getParameterValue(){
 		//return 
 	//Return value
 	unsigned int value;
-	if (isReference()){
-		fread(&value,sizeof(unsigned int),1,mainFile);
+	bool isRef = isReference();
+	fread(&value,sizeof(unsigned int),1,mainFile);
+	printf("parameter: %d\n", value);
+	if (isRef){
 		int t = programRegister.returnValue(value);
 		return t;
 	}
@@ -69,23 +71,25 @@ unsigned int getParameterValue(){
 bool isReference(){
 	char flag;
 	fread(&flag,sizeof(char),1,mainFile);
-	cout << "flaG:"<<flag<<endl;
+	// cout << "flaG:"<<flag<<endl;
 	if (flag == 0){//not a reference
+		printf("FALSE FLAG\n");
 		return false;	
 	}
 	//otherwise
+	printf("TRUE FLAG\n");
 	return true;
 }
 
-int execute(char instr){
-	printf("as an int: [%d]\n", instr);
+int execute(unsigned int instr){
+	printf("OPCODE: [%d]\n", instr);
 	switch(instr){
 		case 0://hlt
 			running = 0;//stop looking for new cycles
 			break;
-		case 1://moving one variable to another variable
+		case 1234://moving one variable to another variable
 			//get parameter
-
+			printf("variabeL: %d||",getParameterValue());
 			break;
 		case 2://add
 			break;
@@ -105,6 +109,15 @@ int execute(char instr){
 			break;
 		case 10://
 			break;
+		case 11://defi
+			unsigned int t = getParameterValue();//will always be value
+			cout << "t is: " << t <<endl;
+			printf("%ud\n", t);
+			programRegister.addValue(t);
+			break;
+		case 30://dmp
+			programRegister.dumpRegister();
+			break;
 		default:
 			printf("oh\n");
 			//badhalt("invalid operand");
@@ -117,12 +130,11 @@ void readMagic(FILE *fle){
 	char temp;
 	for (int i = 0; i < 3; i++){
 		fread(&temp,sizeof(char),1,mainFile);
-		printf("%hd\n", temp);
 		magics[i] = (int)temp;
 	}
 
 	if ((magics[0] == 72) && (magics[1] == 89) && (magics[2] == FILE_VERSION)){
-		printf("HEY!!!\n");
+		//Magic Values are all correct
 	}else{
 		printf("Error: invalid magic\n");
 	}
@@ -144,6 +156,16 @@ void decode(int x){
 
 }
 
+void checkenv(){
+	if (sizeof(char) != 1){
+		badhalt("1 byte read structure invalid");
+	}
+
+	if (sizeof(unsigned int) != 4){
+		badhalt("4 byte read structure invalid");
+	}
+
+}
 void badhalt(char* reason){
 	//Stop all of the threads
 	//Print out error message
