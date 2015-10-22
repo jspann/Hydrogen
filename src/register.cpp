@@ -7,7 +7,7 @@ Register::Register(){
 }
 
 void Register::initRegister(){
-
+	usedSpaces = 0;
 }
 
 void Register::dumpRegister(){
@@ -35,4 +35,9 @@ int Register::returnValue(int atLocation) {
 
 void Register::killRegister(){
 	
+}
+
+void Register::addValue(int value){
+	values[usedSpaces] = value;
+	usedSpaces++;
 }
