@@ -12,6 +12,9 @@ A simple [register based](http://markfaction.wordpress.com/2012/07/15/stack-base
 To compile Hydrogen make sure you have gcc and simply type `make`. This will compile the files and add the `hydro` binary to your /usr/bin directory.
 To test your freshly built version of Hydrogen, press type `make test` or `hydro -R test.txt`
 
+## Recommended build environment?
+I am currently building this on OSX 10.9.5 with g++ 4.0.1
+
 ## What is the instruction set?
 Take a look at opcodes.txt
 
