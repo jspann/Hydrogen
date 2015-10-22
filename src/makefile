@@ -3,10 +3,11 @@ PP=g++
 CFLAGS=-Wall
 
 all:
+	$(PP) $(CFLAGS) -c register.cpp
 	$(PP) $(CFLAGS) -c heap.cpp
 	$(PP) $(CFLAGS) -c Front.cpp
 	$(PP) $(CFLAGS) -c vm.cpp
-	$(PP) -o hydro heap.o vm.o Front.o
+	$(PP) -o hydro heap.o vm.o Front.o register.o
 	sudo mv hydro /usr/bin
 	rm -f *.o
 
