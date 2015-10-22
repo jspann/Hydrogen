@@ -1,0 +1,4 @@
+quit/exit - exits the program
+stacktrace - prints function call order
+data - prints variables and their values
+help - prints this file
