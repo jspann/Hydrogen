@@ -57,7 +57,7 @@ int main (int argc, char *argv[]) {
 			
 			FILE *fp = fopen(filename,"r");
 			if( fp ) {
-				initVM();
+				initVM(fp);
 				fclose(fp);
 				
 				
