@@ -101,38 +101,57 @@ bool isReference(){
 int execute(unsigned int instr){
 	printf("OPCODE: [%d]\n", instr);
 	if (instr == 0){//hlt
-		running = 0;//stop looking for new cycles
-	}else if (instr == 1){
-		//moving one variable to another variable
-		//get parameter
+		//opcode
+		running = 0;
+	}else if (instr == 1){//mov
+		// opcode, <value being set>
 		unsigned int loc = getMemoryLocation();
 		unsigned int val = getParameterValue();
 		programRegister.setValueAt(loc, val);
 	}else if (instr == 2){//add
+		// opcode, <location>, <value being added>
 		unsigned int loc = getMemoryLocation();
 		unsigned int val1 = getParameterValue();
 		unsigned int temp = programRegister.returnValue(loc)+val1;
 		programRegister.setValueAt(loc, temp);
 	}else if (instr == 3){//sub
+		// opcode, <location>, <value being subtracted>
 		unsigned int loc = getMemoryLocation();
 		unsigned int val1 = getParameterValue();
 		unsigned int temp = programRegister.returnValue(loc)-val1;
 		programRegister.setValueAt(loc, temp);
-	}else if (instr == 4){//
-	}else if (instr == 5){//
-	}else if (instr == 6){//
+	}else if (instr == 4){//mult
+		// opcode, <location>, <value being multiplied>
+		unsigned int loc = getMemoryLocation();
+		unsigned int val1 = getParameterValue();
+		unsigned int temp = programRegister.returnValue(loc)*val1;
+		programRegister.setValueAt(loc, temp);
+	}else if (instr == 5){//div
+		// opcode, <location>, <value being divided>
+		unsigned int loc = getMemoryLocation();
+		unsigned int val1 = getParameterValue();
+		unsigned int temp = programRegister.returnValue(loc)/val1;
+		programRegister.setValueAt(loc, temp);
+	}else if (instr == 6){//mod
+		// opcode, <location>, <value being modified>
+		unsigned int loc = getMemoryLocation();
+		unsigned int val1 = getParameterValue();
+		unsigned int temp = programRegister.returnValue(loc)%val1;
+		programRegister.setValueAt(loc, temp);
 	}else if (instr == 7){//inc
+		// opcode, <location>, <value being incremented>
 		unsigned int loc = getMemoryLocation();
 		unsigned int temp = programRegister.returnValue(loc)+1;
 		programRegister.setValueAt(loc, temp);
-
 	}else if (instr == 8){//dec
+		// opcode, <location>, <value being decrimented>
 		unsigned int loc = getMemoryLocation();
 		unsigned int temp = programRegister.returnValue(loc)-1;
 		programRegister.setValueAt(loc, temp);
 	}else if (instr == 9){//
 	}else if (instr == 10){//
 	}else if (instr == 11){//defi
+		// opcode, <value being set>
 		unsigned int t = getParameterValue();//will always be value
 		cout << "t is: " << t <<endl;
 		printf("%ud\n", t);
@@ -159,9 +178,8 @@ int execute(unsigned int instr){
 			}	
 		}
 		
-
-		printf("lezgo\n");
 	}else if (instr == 21){//ret
+		//opcode
 		rewind(mainFile);
 		pointerplace = 0;
 		printf("to go:[%d]\n",functionStack.top());
@@ -177,9 +195,11 @@ int execute(unsigned int instr){
 		printf("RET location[%d]\n",pointerplace );
 
 	}else if (instr == 30){//dmp
+		//opcode
 		programRegister.dumpRegister();
 	}else{
-		printf("oh\n");
+		printf("Error. Unknown opcode\n");
+		exit(0);
 		//badhalt("invalid operand");
 	}
 	return 0;
