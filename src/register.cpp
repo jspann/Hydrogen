@@ -24,7 +24,7 @@ void Register::setValueAt(int loc, int vu){
 	values[loc] = vu;
 }
 
-int Register::returnValue(int atLocation) {
+unsigned int Register::returnValue(int atLocation) {
     if (atLocation > MAX_SPACES || atLocation < 0){
         cout << "Invalid memory location" << endl;
         return 0;

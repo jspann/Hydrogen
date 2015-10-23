@@ -22,7 +22,7 @@ class Register{
 		void dumpRegister();
 		void setValueAt(int loc, int vu);
 		void addValue(int value);
-		int returnValue(int atLocation);
+		unsigned int returnValue(int atLocation);
 		void killRegister();
 };
 
