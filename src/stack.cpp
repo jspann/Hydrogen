@@ -1,4 +1,7 @@
-//#import "stack.h"
+#include <iostream>
+#import "stack.h"
+
+using namespace std;
 
 // void Stack::initStack(){
 // 	Stack::scount = 0;//CURRENT NUMBER OF VALUES ON STACK
@@ -19,3 +22,16 @@
 // int count(){
 // 	return Stack::scount;
 // }
+
+Stack::Stack(){
+
+}
+
+
+int Stack::top(){
+	return values[scount-1];
+}
+
+void Stack::killStack(){
+	
+}

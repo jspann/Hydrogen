@@ -20,14 +20,11 @@ class Stack{
 		void push(int p){values[scount] = p;scount++;return;}//Adds value to top of stack
 		void pop(){scount--;return;}//Removes topmost value in stack
 		int count(){return scount;}//Number of used spaces in stack
+		//int top(){return values[scount-1]}
+		int top();
 		void killStack();
 };
 
-Stack::Stack(){
 
-}
 
-void Stack::killStack(){
-	
-}
 #endif
