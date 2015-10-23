@@ -22,6 +22,7 @@ unsigned int getInstruction();
 bool isReference();
 void getopcode();
 unsigned int getParameterValue();
+unsigned int getMemoryLocation();
 int execute(unsigned int instr);
 
 void initVM(FILE *fle){
@@ -53,10 +54,19 @@ unsigned int getInstruction(){
 	return temp;
 }
 
+unsigned int getMemoryLocation(){
+	unsigned int loc;
+	bool isRef = isReference();
+	fread(&loc,sizeof(unsigned int),1,mainFile);
+	if (isRef){
+		return loc;
+	}else{
+		// badhalt("Reference error");
+	}
+	return -1;
+}
+
 unsigned int getParameterValue(){
-	//check if variable/reference == True
-		//return 
-	//Return value
 	unsigned int value;
 	bool isRef = isReference();
 	fread(&value,sizeof(unsigned int),1,mainFile);
@@ -83,44 +93,37 @@ bool isReference(){
 
 int execute(unsigned int instr){
 	printf("OPCODE: [%d]\n", instr);
-	switch(instr){
-		case 0://hlt
-			running = 0;//stop looking for new cycles
-			break;
-		case 1234://moving one variable to another variable
-			//get parameter
-			printf("variabeL: %d||",getParameterValue());
-			break;
-		case 2://add
-			break;
-		case 3://sub
-			break;
-		case 4://
-			break;
-		case 5://
-			break;
-		case 6://
-			break;
-		case 7://
-			break;
-		case 8://
-			break;
-		case 9://
-			break;
-		case 10://
-			break;
-		case 11://defi
-			unsigned int t = getParameterValue();//will always be value
-			cout << "t is: " << t <<endl;
-			printf("%ud\n", t);
-			programRegister.addValue(t);
-			break;
-		case 30://dmp
-			programRegister.dumpRegister();
-			break;
-		default:
-			printf("oh\n");
-			//badhalt("invalid operand");
+	if (instr == 0){//hlt
+		running = 0;//stop looking for new cycles
+	}else if (instr == 1){
+		//moving one variable to another variable
+		//get parameter
+		unsigned int loc = getMemoryLocation();
+		unsigned int val = getParameterValue();
+		programRegister.setValueAt(loc, val);
+	}else if (instr == 2){//add
+		unsigned int loc = getMemoryLocation();
+		unsigned int val1 = getParameterValue();
+		unsigned int temp = programRegister.returnValue(loc)+val1;
+		programRegister.setValueAt(loc, temp);
+	}else if (instr == 3){//sub
+	}else if (instr == 4){//
+	}else if (instr == 5){//
+	}else if (instr == 6){//
+	}else if (instr == 7){//
+	}else if (instr == 8){//
+	}else if (instr == 9){//
+	}else if (instr == 10){//
+	}else if (instr == 11){//defi
+		unsigned int t = getParameterValue();//will always be value
+		cout << "t is: " << t <<endl;
+		printf("%ud\n", t);
+		programRegister.addValue(t);
+	}else if (30){//dmp
+		programRegister.dumpRegister();
+	}else{
+		printf("oh\n");
+		//badhalt("invalid operand");
 	}
 	return 0;
 }
