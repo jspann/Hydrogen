@@ -15,12 +15,14 @@ Stack functionStack;
 Register programRegister;
 
 FILE *mainFile;
+unsigned int methodOffset;
+
+int pointerplace;
 
 short int readMagicHeader(FILE *file);
 void readMagic(FILE *fle);
 unsigned int getInstruction();
 bool isReference();
-void getopcode();
 unsigned int getParameterValue();
 unsigned int getMemoryLocation();
 int execute(unsigned int instr);
@@ -29,6 +31,7 @@ void initVM(FILE *fle){
 	//Create data structures
 	checkenv();
 	mainFile = fle;
+	pointerplace = 0;
 	//Create initial thread
 
 	functionStack.initStack();
@@ -51,6 +54,7 @@ void initVM(FILE *fle){
 unsigned int getInstruction(){
 	int temp;
 	fread(&temp,sizeof(unsigned int),1,mainFile);
+	pointerplace +=4;//moved 4 bytes
 	return temp;
 }
 
@@ -58,6 +62,7 @@ unsigned int getMemoryLocation(){
 	unsigned int loc;
 	bool isRef = isReference();
 	fread(&loc,sizeof(unsigned int),1,mainFile);
+	pointerplace +=4;//moved 4 bytes
 	if (isRef){
 		return loc;
 	}else{
@@ -70,6 +75,7 @@ unsigned int getParameterValue(){
 	unsigned int value;
 	bool isRef = isReference();
 	fread(&value,sizeof(unsigned int),1,mainFile);
+	pointerplace +=4;//moved 4 bytes
 	printf("parameter: %d\n", value);
 	if (isRef){
 		int t = programRegister.returnValue(value);
@@ -81,6 +87,7 @@ unsigned int getParameterValue(){
 bool isReference(){
 	char flag;
 	fread(&flag,sizeof(char),1,mainFile);
+	pointerplace +=1;//moved 1 byte
 	// cout << "flaG:"<<flag<<endl;
 	if (flag == 0){//not a reference
 		printf("FALSE FLAG\n");
@@ -107,11 +114,22 @@ int execute(unsigned int instr){
 		unsigned int temp = programRegister.returnValue(loc)+val1;
 		programRegister.setValueAt(loc, temp);
 	}else if (instr == 3){//sub
+		unsigned int loc = getMemoryLocation();
+		unsigned int val1 = getParameterValue();
+		unsigned int temp = programRegister.returnValue(loc)-val1;
+		programRegister.setValueAt(loc, temp);
 	}else if (instr == 4){//
 	}else if (instr == 5){//
 	}else if (instr == 6){//
-	}else if (instr == 7){//
-	}else if (instr == 8){//
+	}else if (instr == 7){//inc
+		unsigned int loc = getMemoryLocation();
+		unsigned int temp = programRegister.returnValue(loc)+1;
+		programRegister.setValueAt(loc, temp);
+
+	}else if (instr == 8){//dec
+		unsigned int loc = getMemoryLocation();
+		unsigned int temp = programRegister.returnValue(loc)-1;
+		programRegister.setValueAt(loc, temp);
 	}else if (instr == 9){//
 	}else if (instr == 10){//
 	}else if (instr == 11){//defi
@@ -119,7 +137,46 @@ int execute(unsigned int instr){
 		cout << "t is: " << t <<endl;
 		printf("%ud\n", t);
 		programRegister.addValue(t);
-	}else if (30){//dmp
+	}else if (instr == 20){//call
+		//opcode, <where we are going>, <where we return>
+		unsigned int position = getParameterValue();
+		functionStack.push(pointerplace);
+		int newloc =  methodOffset+position;
+		printf("[%d]{%d}[%d]\n",pointerplace,newloc,position );
+		if (pointerplace < newloc){
+			while (pointerplace != newloc){
+				char t;	
+				fread(&t,sizeof(char),1,mainFile);
+				pointerplace++;
+				printf("(%d)\n", pointerplace);
+			}
+		}else{
+			while (pointerplace != newloc){
+				char t;	
+				fread(&t,sizeof(char),1,mainFile);
+				pointerplace--;
+				printf("(%d)\n", pointerplace);
+			}	
+		}
+		
+
+		printf("lezgo\n");
+	}else if (instr == 21){//ret
+		rewind(mainFile);
+		pointerplace = 0;
+		printf("to go:[%d]\n",functionStack.top());
+
+		for (int i = 0; i < functionStack.top(); i++){
+			char t;
+			fread(&t,sizeof(char),1,mainFile);
+			pointerplace +=1;
+			// printf("[ %c ]\n", t);
+		}
+		functionStack.pop();
+		printf("returned\n");
+		printf("RET location[%d]\n",pointerplace );
+
+	}else if (instr == 30){//dmp
 		programRegister.dumpRegister();
 	}else{
 		printf("oh\n");
@@ -133,26 +190,17 @@ void readMagic(FILE *fle){
 	char temp;
 	for (int i = 0; i < 3; i++){
 		fread(&temp,sizeof(char),1,mainFile);
+		pointerplace +=1;//moved 1 byte
 		magics[i] = (int)temp;
 	}
 
 	if ((magics[0] == 72) && (magics[1] == 89) && (magics[2] == FILE_VERSION)){
 		//Magic Values are all correct
+		//methodOffset = getInstruction();
 	}else{
 		printf("Error: invalid magic\n");
+		exit(0);
 	}
-}
-
-char readVariable(){
-	return 10;
-}
-
-char readNumber(){
-	return 12;
-}
-
-void getopcode(){
-
 }
 
 void decode(int x){
