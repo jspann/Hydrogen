@@ -14,6 +14,9 @@ using namespace std;
 Stack functionStack;
 Register programRegister;
 
+Stack STDIN;//not currently used
+Stack STDOUT;//not currently used
+
 FILE *mainFile;
 unsigned int methodOffset;
 
@@ -41,8 +44,6 @@ void initVM(FILE *fle){
 	running = 1;
 	while (running){
 		unsigned int instr = getInstruction();//fetch
-		// printf("HD QUALITY [%hd]\n", instr);
-		// printf("UNSIGNED EDITION [%u]\n", instr);
 		execute(instr);//decode and execute
 		//debugger pause check
 	}
