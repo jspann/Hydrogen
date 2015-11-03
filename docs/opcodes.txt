@@ -1,5 +1,7 @@
 Hydrogen Opcodes:
 
+(0000) hlt - stops program
+
 (0001) mov - move value into register
 
 (0002) add - used for adding values
@@ -11,16 +13,17 @@ Hydrogen Opcodes:
 (0007) inc - increment
 (0008) dec - decriment
 
-(0010) goto - goto line in file
-ret - returns value
-retv - returns void
-
-
 (0011) defi - this defines a new integer
+
+
+jmp - jumps to place in file
+(0020) call - calls the method and has the following operands as parameters
+
+(0021) ret - returns value
+
 
 (0030) dmp - prints the register and its values
 
-(0000) hlt - stops program
 
 
 
@@ -30,12 +33,10 @@ retv - returns void
 Not yet implemented opcodes:
 defb - this defines a new boolean (1 for true 0 for false)
 defc - this defines a new char
-deff - defines a nef function. 2 paramters: return type, name (in plaintext)
 cnst - defines new constant
 coeq - compares the 2 values and checks if they are equal
 cogt - compares the 2 values and checks if the 2nd value is greater than the first (less than operator)
 colt - compares the 2 values and checks if the 1st value is greater than the first (greater than operator)
-call - calls the method and has the following operands as parameters
 free - frees value from memory
 
 Section opcodes:
