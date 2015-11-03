@@ -1,0 +1,3 @@
+handwrite.cpp - used to prototype applications to be run by the VM
+
+binc.sh - used to compile and run handwrite.cpp
