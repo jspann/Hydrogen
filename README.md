@@ -1,4 +1,4 @@
-Hydrogen-Virtual-Machine
+Hydrogen Virtual Machine
 ========================
 
 A basic process virtual machine
